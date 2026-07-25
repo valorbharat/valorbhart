@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALOR | The Intelligence Behind Public Procurement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0a0a1a;
+            --dark-secondary: #141428;
+            --gold: #d4af37;
+            --gold-light: #f0d878;
+            --light-red: #d97b7b;
+            --light-red-bg: #fff5f5;
+            --cream: #f8f6f0;
+            --white: #ffffff;
+            --dark-text: #1a1a1a;
+            --gray: #888888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark-bg);
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            color: white;
+            font-size: 28px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .linkedin-nav {
+            color: var(--gold) !important;
+            font-size: 18px !important;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--light-red);
+        }
+
+        .hero-logo {
+            width: 280px;
+            max-width: 80%;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .hero-logo:hover { transform: scale(1.03); }
+
+        .hero-tagline {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .hero-tagline:hover { color: var(--gold-light); }
+
+        .gold-line {
+            width: 120px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto 30px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 a {
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        .hero h1 a:hover { color: var(--gold); }
+
+        .hero-subtitle {
+            color: var(--gold);
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .stat-box {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1.5px solid var(--gold);
+            border-radius: 10px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .hero-quote {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--light-red);
+            border-radius: 10px;
+            padding: 25px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .hero-quote:hover { border-color: var(--gold); }
+
+        .hero-quote p {
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .hero-quote span {
+            color: var(--light-red);
+            font-size: 13px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            background: var(--dark-bg);
+            padding: 40px 50px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .section-header h2 {
+            color: var(--gold);
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+
+        .section-header h2:hover { color: var(--gold-light); }
+
+        .section-header h2 a {
+            color: var(--gold);
+            transition: color 0.3s;
+        }
+
+        .section-header h2 a:hover { color: var(--gold-light); }
+
+        .section-header p {
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* Pain Solution Proof */
+        .psp-section {
+            background: var(--cream);
+            padding: 60px 50px;
+        }
+
+        .psp-table {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .psp-table th {
+            background: var(--dark-bg);
+            color: var(--gold);
+            padding: 18px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            border: 1.5px solid var(--gold);
+        }
+
+        .psp-table td {
+            padding: 22px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.6;
+            border: 1.5px solid var(--gold);
+            vertical-align: middle;
+        }
+
+        .psp-table tr:nth-child(even) { background: var(--white); }
+        .psp-table tr:nth-child(odd) { background: #fafafa; }
+
+        .psp-pain { color: var(--light-red); font-weight: 700; }
+        .psp-solution { color: var(--dark-text); font-weight: 700; }
+        .psp-proof { color: #1a5c1a; font-weight: 700; }
+
+        .psp-quote {
+            background: var(--dark-bg);
+            border-radius: 10px;
+            padding: 30px 40px;
+            max-width: 900px;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+
+        .psp-quote p {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .psp-quote span {
+            color: var(--light-red);
+            font-size: 13px;
+            font-style: italic;
+            display: block;
+            margin-top: 12px;
+        }
+
+        /* Flywheel Section */
+        .flywheel-section {
+            background: var(--cream);
+            padding: 0 50px 60px;
+        }
+
+        .flywheel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .flywheel-step {
+            background: var(--dark-bg);
+            border: 1.5px solid var(--gold);
+            border-radius: 10px;
+            padding: 25px 30px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .flywheel-step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .flywheel-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--light-red);
+        }
+
+        .flywheel-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .flywheel-step h3 {
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .flywheel-step .subtitle {
+            color: var(--gray);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .flywheel-bullets {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 30px;
+            margin-top: 10px;
+        }
+
+        .flywheel-bullets li {
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 500;
+            list-style: none;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .flywheel-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .flywheel-arrow {
+            text-align: center;
+            color: var(--light-red);
+            font-size: 24px;
+            margin: -5px 0;
+        }
+
+        .dual-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .badge:hover { transform: translateY(-3px); }
+
+        .badge.consulting { background: var(--light-red); }
+        .badge.trading { background: var(--gold); }
+
+        .badge h4 {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .badge.consulting h4 { color: var(--white); }
+        .badge.trading h4 { color: var(--dark-bg); }
+
+        .badge p {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge.consulting p { color: rgba(255,255,255,0.9); }
+        .badge.trading p { color: var(--dark-bg); opacity: 0.8; }
+
+        /* Trusted Clients */
+        .clients-section {
+            background: var(--cream);
+            padding: 0 50px 60px;
+        }
+
+        .clients-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .client-tier {
+            margin-bottom: 35px;
+        }
+
+        .client-tier h3 {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .client-tier h3:hover { color: var(--gold-light); }
+
+        .tier-line {
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            margin-bottom: 18px;
+        }
+
+        .client-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .client-badge {
+            background: var(--light-red-bg);
+            border: 1px solid var(--light-red);
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--dark-text);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .client-badge:hover {
+            background: var(--light-red);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .clients-bottom {
+            background: var(--dark-bg);
+            border-radius: 10px;
+            padding: 25px 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .clients-bottom h4 {
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .clients-bottom h4:hover { color: var(--gold-light); }
+
+        .clients-bottom p {
+            color: var(--white);
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Alliances */
+        .alliances-section {
+            background: var(--cream);
+            padding: 0 50px 60px;
+        }
+
+        .alliances-table {
+            max-width: 900px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .alliances-table th {
+            background: var(--dark-bg);
+            color: var(--gold);
+            padding: 18px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+            border: 1.5px solid var(--gold);
+        }
+
+        .alliances-table td {
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.5;
+            border: 1.5px solid var(--gold);
+            vertical-align: middle;
+        }
+
+        .alliances-table tr:nth-child(even) { background: var(--white); }
+        .alliances-table tr:nth-child(odd) { background: #fafafa; }
+
+        .alliance-name {
+            color: var(--light-red);
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .alliance-desc {
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        /* Leadership */
+        .leadership-box {
+            background: var(--dark-bg);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 40px auto 0;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .leadership-box:hover {
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .leadership-box h3 {
+            color: var(--gold);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .leadership-box h3:hover { color: var(--gold-light); }
+
+        .leadership-box .role {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .leadership-box .quote {
+            color: var(--light-red);
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            background: linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark-bg) 100%);
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--light-red);
+        }
+
+        .contact-form-section h2 {
+            color: var(--gold);
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .contact-form-section h2:hover { color: var(--gold-light); }
+
+        .contact-form-section .sub-text {
+            color: var(--white);
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            background: rgba(26, 26, 46, 0.6);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--gray);
+            font-size: 11px;
+            margin-top: 15px;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-section {
+            background: var(--dark-bg);
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .contact-logo {
+            width: 200px;
+            max-width: 60%;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.2));
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .contact-logo:hover { transform: scale(1.03); }
+
+        .contact-info-section .tagline {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .contact-info-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .contact-info-section h2:hover { color: var(--gold); }
+
+        .contact-info-section .sub-text {
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1.5px solid var(--light-red);
+            border-radius: 10px;
+            padding: 25px 30px;
+            min-width: 220px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(217, 123, 123, 0.2);
+        }
+
+        .contact-card .label {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card .value {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            word-break: break-all;
+        }
+
+        .contact-card .sub {
+            color: var(--gray);
+            font-size: 11px;
+        }
+
+        /* Social Media */
+        .social-section {
+            margin-top: 30px;
+        }
+
+        .social-section p {
+            color: var(--gray);
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0077b5;
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .linkedin-btn:hover {
+            background: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3);
+        }
+
+        .linkedin-btn i { font-size: 18px; }
+
+        .contact-footer-text {
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            margin-top: 40px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .contact-footer-text:hover { color: var(--gold-light); }
+
+        .contact-footer-sub {
+            color: var(--white);
+            font-size: 12px;
+            opacity: 0.8;
+            word-spacing: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 20px 50px;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 28px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .psp-table th, .psp-table td { padding: 12px 8px; font-size: 11px; }
+            .flywheel-bullets { grid-template-columns: 1fr; }
+            .dual-badges { flex-direction: column; align-items: center; }
+            .contact-info-section h2, .contact-form-section h2 { font-size: 28px; }
+            .contact-cards { flex-direction: column; align-items: center; }
+            .section-header h2 { font-size: 20px; }
+            .contact-form-section, .contact-info-section, .psp-section,
+            .flywheel-section, .clients-section, .alliances-section {
+                padding-left: 20px; padding-right: 20px;
+            }
+            .whatsapp-float {
+                width: 50px; height: 50px;
+                bottom: 15px; right: 15px;
+            }
+            .whatsapp-float i { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="whatsapp-float" title="Chat with VALOR on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="nav-logo">VALOR</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#clients">Clients</a></li>
+            <li><a href="#alliances">Alliances</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/valorgem" target="_blank" class="linkedin-nav"><i class="fab fa-linkedin"></i></a></li>
+        </ul>
+        <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <img src="LOGO.jpg" alt="VALOR Logo" class="hero-logo">
+        </a>
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="hero-tagline">The Intelligence Behind Public Procurement</div>
+        </a>
+        <div class="gold-line"></div>
+        <h1>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                Strategic Gateway to<br>Global Public Procurement<br>& G2B Market Execution
+            </a>
+        </h1>
+        <div class="hero-subtitle">Gujarat-Based | Full-Stack | Zero-Incident Track Record</div>
+
+        <div class="stats-grid">
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="stat-box">
+                <span class="stat-number">₹500+</span>
+                <span class="stat-label">Crore Tender<br>Value Facilitated</span>
+            </a>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="stat-box">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Compliance<br>Incidents</span>
+            </a>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="stat-box">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Active GeM<br>Profiles Managed</span>
+            </a>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="stat-box">
+                <span class="stat-number">73%</span>
+                <span class="stat-label">Win-Rate<br>Improvement</span>
+            </a>
+        </div>
+
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="hero-quote">
+                <p>"From GeM onboarding to international bid execution — we don't just navigate public procurement. We architect it."</p>
+                <span>— VALOR</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- Pain Solution Proof -->
+    <div class="section-header" id="solutions">
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                The Pain → The Solution → The Proof
+            </a>
+        </h2>
+        <p>Why India's Top Manufacturers & MSMEs Partner with VALOR</p>
+    </div>
+
+    <section class="psp-section">
+        <table class="psp-table">
+            <thead>
+                <tr>
+                    <th>The Pain</th>
+                    <th>The Valor Solution</th>
+                    <th>The Proof</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="psp-pain">GeM account suspended due to documentation gaps</td>
+                    <td class="psp-solution">Zero-Incident Profile Architecture — proactive audit & compliance monitoring</td>
+                    <td class="psp-proof">150+ active GeM profiles managed with 0 blacklisting</td>
+                </tr>
+                <tr>
+                    <td class="psp-pain">Lost tenders due to L1 bid miscalculations</td>
+                    <td class="psp-solution">RA Intelligence Engine — financial modeling for optimal bid positioning</td>
+                    <td class="psp-proof">73% win-rate improvement for partner MSMEs</td>
+                </tr>
+                <tr>
+                    <td class="psp-pain">EMD / PBG locking up working capital</td>
+                    <td class="psp-solution">Financial Flow Optimization — structured guarantee deployment</td>
+                    <td class="psp-proof">₹12 Crore+ in capital freed for clients</td>
+                </tr>
+                <tr>
+                    <td class="psp-pain">Complex cross-border procurement compliance</td>
+                    <td class="psp-solution">Global Procurement Desk — Singapore & India dual-hub execution</td>
+                    <td class="psp-proof">3 international tenders successfully executed</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="psp-quote">
+                <p>"Government procurement isn't about filling forms — it's about building institutional trust at scale."</p>
+                <span>— Mr. Pankaj Bhargav, Director & Principal Consultant</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- Flywheel -->
+    <div class="section-header" id="services">
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                The Valor Procurement Flywheel
+            </a>
+        </h2>
+        <p>End-to-End Architecture for Sovereign Revenue Generation</p>
+    </div>
+
+    <section class="flywheel-section">
+        <div class="flywheel-container">
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                <div class="flywheel-step">
+                    <div class="flywheel-header">
+                        <h3>1. PREPARE</h3>
+                        <span class="subtitle">Profile Build</span>
+                    </div>
+                    <ul class="flywheel-bullets">
+                        <li>GeM / NSIC / NIXI Onboarding</li>
+                        <li>OEM Panel Structuring</li>
+                        <li>Manufacturer Authorization Forms (MAF)</li>
+                        <li>Corporate Secretarial Auditing</li>
+                    </ul>
+                </div>
+            </a>
+            <div class="flywheel-arrow"><i class="fas fa-chevron-down"></i></div>
+
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                <div class="flywheel-step">
+                    <div class="flywheel-header">
+                        <h3>2. POSITION</h3>
+                        <span class="subtitle">Market Ready</span>
+                    </div>
+                    <ul class="flywheel-bullets">
+                        <li>UNSPSC Catalog Optimization</li>
+                        <li>Smarter Listing Architecture</li>
+                        <li>State E-Procurement Portal Mapping</li>
+                        <li>ONDC Ecosystem Integration</li>
+                    </ul>
+                </div>
+            </a>
+            <div class="flywheel-arrow"><i class="fas fa-chevron-down"></i></div>
+
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                <div class="flywheel-step">
+                    <div class="flywheel-header">
+                        <h3>3. COMPETE</h3>
+                        <span class="subtitle">Tender Win</span>
+                    </div>
+                    <ul class="flywheel-bullets">
+                        <li>Bid Intelligence & RA Modeling</li>
+                        <li>BOQ Compliance & L1 Strategy</li>
+                        <li>EMD / PBG Financial Optimization</li>
+                        <li>Reverse Auction Positioning</li>
+                    </ul>
+                </div>
+            </a>
+            <div class="flywheel-arrow"><i class="fas fa-chevron-down"></i></div>
+
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                <div class="flywheel-step">
+                    <div class="flywheel-header">
+                        <h3>4. DELIVER</h3>
+                        <span class="subtitle">Fulfill & Scale</span>
+                    </div>
+                    <ul class="flywheel-bullets">
+                        <li>Post-Award SLA Management</li>
+                        <li>Global Supply Chain Execution</li>
+                        <li>Incident Management & Risk Defense</li>
+                        <li>Cross-Border Procurement Scaling</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+
+        <div class="dual-badges">
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="badge consulting">
+                <h4>CONSULTING ARM</h4>
+                <p>Regulatory · Strategy · Compliance</p>
+            </a>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="badge trading">
+                <h4>TRADING ARM</h4>
+                <p>Sourcing · OEM · Fulfillment</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Trusted Clients -->
+    <div class="section-header" id="clients">
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                Trusted by India's Sovereign Institutions
+            </a>
+        </h2>
+        <p>A Proven Track Record Across Government, Defence, Education & PSUs</p>
+    </div>
+
+    <section class="clients-section">
+        <div class="clients-grid">
+            <div class="client-tier">
+                <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                    <h3>Gujarat Level</h3>
+                </a>
+                <div class="tier-line"></div>
+                <div class="client-badges">
+                    <span class="client-badge">Municipal Corporations</span>
+                    <span class="client-badge">Health Department</span>
+                    <span class="client-badge">SRPF (State Reserve Police Force)</span>
+                    <span class="client-badge">Education Department</span>
+                    <span class="client-badge">Agriculture Colleges</span>
+                    <span class="client-badge">Skills India Movement</span>
+                    <span class="client-badge">Maritime Board</span>
+                </div>
+            </div>
+
+            <div class="client-tier">
+                <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                    <h3>National Level</h3>
+                </a>
+                <div class="tier-line"></div>
+                <div class="client-badges">
+                    <span class="client-badge">AIIMS</span>
+                    <span class="client-badge">BSF (Border Security Force)</span>
+                    <span class="client-badge">CBDT (Central Board of Direct Taxes)</span>
+                    <span class="client-badge">CAG (Comptroller & Auditor General)</span>
+                    <span class="client-badge">MEA (Ministry of External Affairs)</span>
+                    <span class="client-badge">RAF (Rapid Action Force)</span>
+                    <span class="client-badge">MSME Department</span>
+                </div>
+            </div>
+
+            <div class="client-tier">
+                <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                    <h3>Public Sector Undertakings (PSUs)</h3>
+                </a>
+                <div class="tier-line"></div>
+                <div class="client-badges">
+                    <span class="client-badge">ONGC</span>
+                    <span class="client-badge">POWERGRID</span>
+                    <span class="client-badge">BHEL</span>
+                    <span class="client-badge">PUSA (IARI)</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="clients-bottom">
+                <h4>Trusted Across Government, Defence, Education & Energy Sectors</h4>
+                <p>From Municipal Bodies to National PSUs — VALOR delivers sovereign-grade procurement excellence.</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Alliances -->
+    <div class="section-header" id="alliances">
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                Institutional Trust Wall
+            </a>
+        </h2>
+        <p>Backed by India's Apex Industrial & Innovation Ecosystems</p>
+    </div>
+
+    <section class="alliances-section">
+        <table class="alliances-table">
+            <thead>
+                <tr>
+                    <th>Alliance</th>
+                    <th>What It Means For You</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="alliance-name">GCCI<br>(Gujarat Chamber of Commerce & Industry)</td>
+                    <td class="alliance-desc">Direct policy advocacy, trade corridor access, and Gujarat-specific tender intelligence</td>
+                </tr>
+                <tr>
+                    <td class="alliance-name">KCCI<br>(Knowledge Chamber of Commerce & Industry)</td>
+                    <td class="alliance-desc">Innovation-led procurement frameworks and next-gen G2B strategy partnerships</td>
+                </tr>
+                <tr>
+                    <td class="alliance-name">i-HUB Gujarat<br>(Student Startup & Innovation Hub)</td>
+                    <td class="alliance-desc">First-mover advantage on tech assets entering the public sector marketplace</td>
+                </tr>
+                <tr>
+                    <td class="alliance-name">ONDC Network<br>(Open Network for Digital Commerce)</td>
+                    <td class="alliance-desc">Decentralized B2B commerce infrastructure for multi-channel market execution</td>
+                </tr>
+                <tr>
+                    <td class="alliance-name">NSIC Channel<br>(National Small Industries Corporation)</td>
+                    <td class="alliance-desc">MSME eligibility unlock for reserved government tenders & PSU contracts</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="leadership-box">
+                <h3>Mr. Pankaj Bhargav</h3>
+                <p class="role">Director & Principal Consultant</p>
+                <p class="quote">"Public procurement isn't about filling forms — it's about building institutional trust at scale. Every client engagement is engineered for long-term sovereign revenue."</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact">
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                Get In Touch
+            </a>
+        </h2>
+        <p class="sub-text">Send us your inquiry and we will respond within 24 hours</p>
+
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company Name *</label>
+                <input type="text" id="company" name="company" placeholder="Enter your company name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID *</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="remarks">Remarks / Message</label>
+                <textarea id="remarks" name="remarks" placeholder="Tell us about your procurement needs..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Inquiry
+            </button>
+
+            <p class="form-note">Your inquiry will be sent to VALORBHARAT@GMAIL.COM</p>
+        </form>
+    </section>
+
+    <!-- Contact Info & Social -->
+    <section class="contact-info-section">
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <img src="LOGO.jpg" alt="VALOR Logo" class="contact-logo">
+        </a>
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="tagline">The Intelligence Behind Public Procurement</div>
+        </a>
+        <div class="gold-line"></div>
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                Ready to Unlock<br>Sovereign Revenue?
+            </a>
+        </h2>
+        <p class="sub-text">Whether you're a manufacturer seeking GeM access,<br>an MSME eyeing PSU contracts, or a corporate scaling globally —<br>VALOR is your institutional backend.</p>
+
+        <div class="contact-cards">
+            <a href="tel:+919978445618" class="contact-card">
+                <div class="label">Call</div>
+                <div class="value">+91-99784-45618</div>
+                <div class="sub">Direct line to Director</div>
+            </a>
+            <a href="mailto:VALORBHARAT@GMAIL.COM" class="contact-card">
+                <div class="label">Email</div>
+                <div class="value">VALORBHARAT@GMAIL.COM</div>
+                <div class="sub">Official inquiries</div>
+            </a>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="contact-card">
+                <div class="label">WhatsApp</div>
+                <div class="value">+91-99784-45618</div>
+                <div class="sub">Chat with VALOR</div>
+            </a>
+        </div>
+
+        <div class="social-section">
+            <p>Connect With Us</p>
+            <a href="https://www.linkedin.com/in/valorgem" target="_blank" class="linkedin-btn">
+                <i class="fab fa-linkedin"></i> Follow on LinkedIn
+            </a>
+        </div>
+
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+            <div class="contact-footer-text">Gujarat's Premier Full-Stack Public Procurement Consultancy</div>
+        </a>
+        <div class="contact-footer-sub">Consulting | Trading | GeM Governance | Global Procurement | Risk Defense</div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>+91-99784-45618 | VALORBHARAT@GMAIL.COM | GANDHINAGAR-GUJARAT, INDIA</p>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const email = document.getElementById('email').value;
+            const remarks = document.getElementById('remarks').value;
+            const subject = encodeURIComponent('New Inquiry from ' + name + ' - ' + company);
+            const body = encodeURIComponent(
+                'Dear VALOR Team,' + '%0A%0A' +
+                'Please find below a new inquiry received through the website:' + '%0A%0A' +
+                '----------------------------------------' + '%0A' +
+                'FULL NAME: ' + name + '%0A' +
+                'COMPANY: ' + company + '%0A' +
+                'EMAIL: ' + email + '%0A' +
+                'REMARKS: ' + (remarks || 'N/A') + '%0A' +
+                '----------------------------------------' + '%0A%0A' +
+                'Submitted via: VALOR Website Contact Form' + '%0A' +
+                'Date: ' + new Date().toLocaleString()
+            );
+            window.location.href = 'mailto:VALORBHARAT@GMAIL.COM?subject=' + subject + '&body=' + body;
+        }
+    </script>
+
+</body>
+</html>
