@@ -2250,57 +2250,109 @@
         })();
     </script>
 
-    <!-- Language Switcher (Google Translate) -->
-    <script>
-        const LANG_NAMES = { en: 'EN', hi: 'HI', gu: 'GU', mr: 'MR', ta: 'TA', bn: 'BN', ar: 'AR', fr: 'FR' };
+	<!-- Dropdown selector with your 8 requested languages -->
+<div class="lang-selector-container">
+  <label for="lang-select">🌐 Language / भाषा:</label>
+  <select id="lang-select">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी (Hindi)</option>
+    <option value="gu">ગુજરાતી (Gujarati)</option>
+    <option value="mr">मराठी (Marathi)</option>
+    <option value="ta">தமிழ் (Tamil)</option>
+    <option value="bn">বাংলা (Bengali)</option>
+    <option value="fr">Français (French)</option>
+    <option value="ar">العربية (Arabic)</option>
+  </select>
+</div>
 
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: 'en', autoDisplay: false },
-                'google_translate_element'
-            );
-        }
+<!-- Example content tags using data-i18n attributes -->
+<main>
+  <h1 data-i18n="hero_title">Welcome to Valor Bharat</h1>
+  <p data-i18n="hero_subtitle">Empowering our nation through secure digital platforms.</p>
+  <button data-i18n="cta_btn">Explore More</button>
+</main>
 
-        function getCookieLang() {
-            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
-            return match ? match[1] : 'en';
-        }
+	// Dictionary map covering your exact language list
+const translations = {
+  en: {
+    hero_title: "Welcome to Valor Bharat",
+    hero_subtitle: "Empowering our nation through secure digital platforms.",
+    cta_btn: "Explore More"
+  },
+  hi: {
+    hero_title: "शूरवीर भारत में आपका स्वागत है",
+    hero_subtitle: "सुरक्षित डिजिटल प्लेटफॉर्म के माध्यम से हमारे राष्ट्र को सशक्त बनाना।",
+    cta_btn: "अधिक जानें"
+  },
+  gu: {
+    hero_title: "શૌર્ય ભારત માં આપનું સ્વાગત છે",
+    hero_subtitle: "સુરક્ષિત ડિજિટલ પ્લેટફોર્મ દ્વારા આપણા રાષ્ટ્રને સશક્ત બનાવવું.",
+    cta_btn: "વધુ જાણો"
+  },
+  mr: {
+    hero_title: "शौर्य भारत मध्ये आपले स्वागत आहे",
+    hero_subtitle: "सुरक्षित डिजिटल प्लॅटफॉर्मद्वारे आपल्या राष्ट्राला सक्षम करणे.",
+    cta_btn: "अधिक जाणून घ्या"
+  },
+  ta: {
+    hero_title: "வீர பாரதத்திற்கு வரவேற்கிறோம்",
+    hero_subtitle: "பாதுகாப்பான டிஜிட்டல் தளங்கள் மூலம் நமது தேசத்தை மேம்படுத்துதல்.",
+    cta_btn: "மேலும் அறிய"
+  },
+  bn: {
+    hero_title: "বীর ভারতে আপনাকে স্বাগতম",
+    hero_subtitle: "সুরক্ষিত ডিজিটাল প্ল্যাটফর্মের মাধ্যমে আমাদের জাতিকে ক্ষমতায়ন করা।",
+    cta_btn: "আরও জানুন"
+  },
+  fr: {
+    hero_title: "Bienvenue à Valor Bharat",
+    hero_subtitle: "Autonomiser notre nation grâce à des plateformes numériques sécurisées.",
+    cta_btn: "En savoir plus"
+  },
+  ar: {
+    hero_title: "مرحبًا بكم في فالور بهارات",
+    hero_subtitle: "تمكين أمتنا من خلال منصات رقمية آمنة.",
+    cta_btn: "استكشف المزيد"
+  }
+};
 
-        function setSiteLanguage(lang) {
-            const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-            const value = lang === 'en' ? '' : ('/en/' + lang);
-            document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/';
-            document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/; domain=.' + location.hostname;
-            window.location.reload();
-        }
+const langSelect = document.getElementById('lang-select');
 
-        (function () {
-            const switcher = document.getElementById('langSwitcher');
-            const btn = document.getElementById('langBtn');
-            const dropdown = document.getElementById('langDropdown');
-            const currentLangLabel = document.getElementById('currentLang');
-            if (!switcher || !btn || !dropdown) return;
+// Main function to switch text and layout orientation
+function updateLanguage(lang) {
+  // 1. Loop and replace text values
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
+  });
 
-            const activeLang = getCookieLang();
-            currentLangLabel.textContent = LANG_NAMES[activeLang] || 'EN';
-            dropdown.querySelectorAll('a').forEach(function (a) {
-                if (a.dataset.lang === activeLang) a.classList.add('active');
-                a.addEventListener('click', function () {
-                    setSiteLanguage(a.dataset.lang);
-                });
-            });
+  // 2. Handle Right-To-Left alignment for Arabic text flows
+  if (lang === 'ar') {
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
+  } else {
+    document.documentElement.dir = 'ltr';
+    document.documentElement.lang = lang;
+  }
 
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                switcher.classList.toggle('open');
-                btn.setAttribute('aria-expanded', switcher.classList.contains('open'));
-            });
+  // 3. Save selection choice to browser memory
+  localStorage.setItem('siteLanguage', lang);
+}
 
-            document.addEventListener('click', function (e) {
-                if (!switcher.contains(e.target)) switcher.classList.remove('open');
-            });
-        })();
-    </script>
+// Event listener for user interactions
+langSelect.addEventListener('change', (e) => {
+  updateLanguage(e.target.value);
+});
+
+// Run automatically when the webpage initially loads
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('siteLanguage') || 'en';
+  langSelect.value = savedLang;
+  updateLanguage(savedLang);
+});
+
     <script async src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
