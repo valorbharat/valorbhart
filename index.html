@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <title>VALOR | Full-Stack Public Procurement & GeM Consultancy</title>
-<meta name="description" content="Sovereign-grade public procurement consultancy in Gujarat. Specializing in GeM profile architecture, risk defense, and financial bid optimization.">
-<meta name="keywords" content="GeM consultant Gujarat, public procurement India, tender bidding strategy, government tenders">
-
-
-    
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALOR | The Intelligence Behind Public Procurement</title>
+    <meta name="description" content="Sovereign-grade public procurement consultancy in Gujarat. Specializing in GeM profile architecture, risk defense, and financial bid optimization.">
+    <meta name="keywords" content="GeM consultant Gujarat, public procurement India, tender bidding strategy, government tenders">
 
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		
+
 		<style>
         :root {
             --dark-bg: #0a0a1a;
@@ -153,7 +148,10 @@
             align-items: center;
             text-align: center;
             padding: 120px 20px 60px;
-            background: linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark-bg) 100%);
+            background:
+                linear-gradient(180deg, rgba(10,10,26,0.88) 0%, rgba(10,10,26,0.97) 100%),
+                url('hero-bg.jpg') center/cover no-repeat,
+                linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark-bg) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1007,6 +1005,209 @@
             }
             .whatsapp-float i { font-size: 22px; }
         }
+
+        /* ===== Language Switcher ===== */
+        #google_translate_element { display: none !important; }
+        .goog-te-banner-frame.skiptranslate,
+        .skiptranslate > iframe { display: none !important; }
+        body { top: 0 !important; position: static !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+        .lang-switcher {
+            position: relative;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--gold);
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .lang-btn i.fa-chevron-down {
+            font-size: 9px;
+            transition: transform 0.25s;
+        }
+
+        .lang-switcher.open .lang-btn i.fa-chevron-down { transform: rotate(180deg); }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: var(--dark-secondary);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 6px;
+            min-width: 160px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s;
+            z-index: 1100;
+        }
+
+        .lang-switcher.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown a {
+            display: block;
+            padding: 9px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            border-radius: 6px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .lang-dropdown a:hover { background: rgba(212, 175, 55, 0.15); color: var(--gold); }
+        .lang-dropdown a.active { color: var(--gold); background: rgba(212, 175, 55, 0.1); }
+
+        @media (max-width: 768px) {
+            .lang-switcher { order: -1; }
+            .lang-dropdown { right: auto; left: 0; }
+        }
+
+        /* ===== Working Mobile Nav ===== */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; gap: 14px; }
+            .nav-links {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                background: var(--dark-secondary);
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease;
+            }
+            .nav-links.nav-open {
+                display: flex;
+                max-height: 500px;
+            }
+            .nav-links li { width: 100%; }
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 16px 24px;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            .nav-links a::after { display: none; }
+        }
+
+        /* ===== Photo Frames (director / team / gallery) ===== */
+        .photo-frame {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, var(--dark-secondary), var(--dark-bg));
+        }
+
+        .photo-frame img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+        }
+
+        .photo-placeholder {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--gold);
+            opacity: 0.55;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .photo-placeholder i { font-size: 26px; }
+        .photo-placeholder span {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .leader-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 2.5px solid var(--gold);
+            margin: 0 auto 20px;
+        }
+
+        .leader-photo .photo-placeholder i { font-size: 34px; }
+
+        /* ===== Gallery Section ===== */
+        .gallery-section {
+            background: var(--cream);
+            padding: 0 50px 60px;
+        }
+
+        .gallery-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            aspect-ratio: 4/5;
+            border: 1.5px solid var(--gold);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        .gallery-caption {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--dark-text);
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
@@ -1077,11 +1278,12 @@
 
     <!-- Navigation -->
     <nav>
-        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="nav-logo">VALOR</a>
-        <ul class="nav-links">
+        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="nav-logo notranslate">VALOR</a>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#solutions">Solutions</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#clients">Clients</a></li>
             <li><a href="insights.html" class="your-button-class">Corporate Insights →
 	</a></li>
@@ -1090,7 +1292,26 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://www.linkedin.com/in/valorgem" target="_blank" class="linkedin-nav"><i class="fab fa-linkedin"></i></a></li>
         </ul>
-        <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+
+        <!-- Language Switcher (built-in Google Translate, custom styled) -->
+        <div class="lang-switcher notranslate" id="langSwitcher">
+            <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-globe"></i> <span id="currentLang">EN</span> <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="lang-dropdown" id="langDropdown">
+                <a data-lang="en">English</a>
+                <a data-lang="hi">हिंदी (Hindi)</a>
+                <a data-lang="gu">ગુજરાતી (Gujarati)</a>
+                <a data-lang="mr">मराठी (Marathi)</a>
+                <a data-lang="ta">தமிழ் (Tamil)</a>
+                <a data-lang="bn">বাংলা (Bengali)</a>
+                <a data-lang="ar">العربية (Arabic)</a>
+                <a data-lang="fr">Français (French)</a>
+            </div>
+        </div>
+        <div id="google_translate_element"></div>
+
+        <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
     </nav>
 
     <!-- Hero Section -->
@@ -1276,6 +1497,49 @@
         </div>
     </section>
 
+    <!-- Gallery: VALOR in Action -->
+    <div class="section-header" id="gallery">
+        <h2>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
+                VALOR in Action
+            </a>
+        </h2>
+        <p>Inside the Team Behind Sovereign-Grade Procurement</p>
+    </div>
+
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div>
+                <div class="photo-frame gallery-item">
+                    <div class="photo-placeholder"><i class="fas fa-building"></i><span>Office</span></div>
+                    <img src="office.jpg" alt="VALOR office, Gandhinagar" onerror="this.style.display='none'">
+                </div>
+                <p class="gallery-caption">Our Office</p>
+            </div>
+            <div>
+                <div class="photo-frame gallery-item">
+                    <div class="photo-placeholder"><i class="fas fa-users"></i><span>Team</span></div>
+                    <img src="team.jpg" alt="VALOR consulting team" onerror="this.style.display='none'">
+                </div>
+                <p class="gallery-caption">Our Team</p>
+            </div>
+            <div>
+                <div class="photo-frame gallery-item">
+                    <div class="photo-placeholder"><i class="fas fa-handshake"></i><span>Client Meeting</span></div>
+                    <img src="meeting.jpg" alt="VALOR client and government liaison meeting" onerror="this.style.display='none'">
+                </div>
+                <p class="gallery-caption">Client Engagements</p>
+            </div>
+            <div>
+                <div class="photo-frame gallery-item">
+                    <div class="photo-placeholder"><i class="fas fa-award"></i><span>Milestone</span></div>
+                    <img src="milestone.jpg" alt="VALOR milestone or event" onerror="this.style.display='none'">
+                </div>
+                <p class="gallery-caption">Milestones</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Trusted Clients -->
     <div class="section-header" id="clients">
         <h2>
@@ -1384,13 +1648,17 @@
             </tbody>
         </table>
 
-        <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
-            <div class="leadership-box">
+        <div class="leadership-box">
+            <div class="photo-frame leader-photo">
+                <div class="photo-placeholder"><i class="fas fa-user-tie"></i></div>
+                <img src="director.jpg" alt="Mr. Pankaj Bhargav, Director & Principal Consultant, VALOR" onerror="this.style.display='none'">
+            </div>
+            <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank">
                 <h3>Mr. Pankaj Bhargav</h3>
                 <p class="role">Director & Principal Consultant</p>
                 <p class="quote">"Public procurement isn't about filling forms — it's about building institutional trust at scale. Every client engagement is engineered for long-term sovereign revenue."</p>
-            </div>
-        </a>
+            </a>
+        </div>
     </section>
 
     <!-- Contact Form Section -->
@@ -1450,17 +1718,17 @@
         <div class="contact-cards">
             <a href="tel:+919978445618" class="contact-card">
                 <div class="label">Call</div>
-                <div class="value">+91-99784-45618</div>
+                <div class="value notranslate">+91-99784-45618</div>
                 <div class="sub">Direct line to Director</div>
             </a>
             <a href="mailto:VALORBHARAT@GMAIL.COM" class="contact-card">
                 <div class="label">Email</div>
-                <div class="value">VALORBHARAT@GMAIL.COM</div>
+                <div class="value notranslate">VALORBHARAT@GMAIL.COM</div>
                 <div class="sub">Official inquiries</div>
             </a>
             <a href="https://wa.me/919978445618?text=I%20NEED%20VALOR%20SUPPORT" target="_blank" class="contact-card">
                 <div class="label">WhatsApp</div>
-                <div class="value">+91-99784-45618</div>
+                <div class="value notranslate">+91-99784-45618</div>
                 <div class="sub">Chat with VALOR</div>
             </a>
         </div>
@@ -1480,7 +1748,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>+91-99784-45618 | VALORBHARAT@GMAIL.COM | GANDHINAGAR-GUJARAT, INDIA</p>
+        <p class="notranslate">+91-99784-45618 | VALORBHARAT@GMAIL.COM | GANDHINAGAR-GUJARAT, INDIA</p>
     </footer>
 
     <script>
@@ -1506,6 +1774,82 @@
             window.location.href = 'mailto:VALORBHARAT@GMAIL.COM?subject=' + subject + '&body=' + body;
         }
     </script>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+        (function () {
+            const btn = document.getElementById('mobileMenuBtn');
+            const links = document.getElementById('navLinks');
+            if (!btn || !links) return;
+            btn.addEventListener('click', function () {
+                links.classList.toggle('nav-open');
+                const icon = btn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            links.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    links.classList.remove('nav-open');
+                    const icon = btn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                });
+            });
+        })();
+    </script>
+
+    <!-- Language Switcher (Google Translate) -->
+    <script>
+        const LANG_NAMES = { en: 'EN', hi: 'HI', gu: 'GU', mr: 'MR', ta: 'TA', bn: 'BN', ar: 'AR', fr: 'FR' };
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en', autoDisplay: false },
+                'google_translate_element'
+            );
+        }
+
+        function getCookieLang() {
+            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+            return match ? match[1] : 'en';
+        }
+
+        function setSiteLanguage(lang) {
+            const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+            const value = lang === 'en' ? '' : ('/en/' + lang);
+            document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/';
+            document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/; domain=.' + location.hostname;
+            window.location.reload();
+        }
+
+        (function () {
+            const switcher = document.getElementById('langSwitcher');
+            const btn = document.getElementById('langBtn');
+            const dropdown = document.getElementById('langDropdown');
+            const currentLangLabel = document.getElementById('currentLang');
+            if (!switcher || !btn || !dropdown) return;
+
+            const activeLang = getCookieLang();
+            currentLangLabel.textContent = LANG_NAMES[activeLang] || 'EN';
+            dropdown.querySelectorAll('a').forEach(function (a) {
+                if (a.dataset.lang === activeLang) a.classList.add('active');
+                a.addEventListener('click', function () {
+                    setSiteLanguage(a.dataset.lang);
+                });
+            });
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                switcher.classList.toggle('open');
+                btn.setAttribute('aria-expanded', switcher.classList.contains('open'));
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!switcher.contains(e.target)) switcher.classList.remove('open');
+            });
+        })();
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
