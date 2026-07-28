@@ -1142,6 +1142,58 @@
             .lang-dropdown { right: auto; left: 0; }
         }
 
+			    <!-- Language Switcher (Google Translate) -->
+    <script>
+        const LANG_NAMES = { en: 'EN', hi: 'HI', gu: 'GU', mr: 'MR', ta: 'TA', bn: 'BN', ar: 'AR', fr: 'FR' };
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en', autoDisplay: false },
+                'google_translate_element'
+            );
+        }
+
+        function getCookieLang() {
+            const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+            return match ? match[1] : 'en';
+        }
+
+        function setSiteLanguage(lang) {
+            const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+            const value = lang === 'en' ? '' : ('/en/' + lang);
+            document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/';
+            document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/; domain=.' + location.hostname;
+            window.location.reload();
+        }
+
+        (function () {
+            const switcher = document.getElementById('langSwitcher');
+            const btn = document.getElementById('langBtn');
+            const dropdown = document.getElementById('langDropdown');
+            const currentLangLabel = document.getElementById('currentLang');
+            if (!switcher || !btn || !dropdown) return;
+
+            const activeLang = getCookieLang();
+            currentLangLabel.textContent = LANG_NAMES[activeLang] || 'EN';
+            dropdown.querySelectorAll('a').forEach(function (a) {
+                if (a.dataset.lang === activeLang) a.classList.add('active');
+                a.addEventListener('click', function () {
+                    setSiteLanguage(a.dataset.lang);
+                });
+            });
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                switcher.classList.toggle('open');
+                btn.setAttribute('aria-expanded', switcher.classList.contains('open'));
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!switcher.contains(e.target)) switcher.classList.remove('open');
+            });
+        })();
+    </script>
+
         /* ===== Working Mobile Nav ===== */
         @media (max-width: 768px) {
             nav { padding: 15px 20px; gap: 14px; }
