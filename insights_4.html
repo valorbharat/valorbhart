@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALOR | Public Procurement & Tender Insights</title>
+    <link rel="icon" href="Webfoto/LOGO.jpg" type="image/jpeg">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <style>
+        :root {
+            --links: #002147;
+            --focus: #d4af37;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        * { box-sizing: border-box; }
+        body { max-width: 900px; margin: 0 auto; padding: 25px; line-height: 1.7; font-family: var(--font-family); color: #1a1a1a; }
+        .back-btn { text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 20px; color: var(--links); }
+        .header-block { border-bottom: 3px solid #002147; padding-bottom: 15px; margin-bottom: 35px; }
+        .logo-text { font-size: 1.8rem; font-weight: 800; color: #002147; margin: 0; }
+        .logo-text span { color: #d4af37; }
+
+        .segment { margin-bottom: 45px; }
+        .segment h2 { color: #002147; font-size: 1.15rem; margin: 0 0 12px; }
+
+        .embed-wrap {
+            border: 1.5px solid #002147;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f4f6f8;
+        }
+        .embed-wrap iframe { width: 100%; height: 650px; border: 0; display: block; }
+
+        .embed-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #002147;
+            text-decoration: none;
+            border-bottom: 1.5px solid var(--focus);
+        }
+        .embed-link:hover { color: var(--focus); }
+
+        @media (max-width: 600px) {
+            .embed-wrap iframe { height: 480px; }
+        }
+
+        .section-divider { margin: 40px 0; opacity: 0.15; border: none; border-top: 2px solid #002147; }
+
+        .portal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        @media (max-width: 650px) { .portal-grid { grid-template-columns: 1fr; } }
+
+        .portal-card { display: flex; flex-direction: column; }
+        .portal-card h3 { margin: 0 0 8px; color: #002147; font-size: 1.02rem; }
+        .portal-card .portal-desc { text-align: left; font-size: 0.85rem; color: #444; margin: 0 0 16px; flex-grow: 1; }
+        .portal-card ul { text-align: left; font-size: 0.83rem; color: #444; margin: 0 0 16px; padding-left: 18px; }
+        .portal-card ul li { margin-bottom: 4px; }
+
+        .portal-card {
+            border: 1.5px solid #002147;
+            border-radius: 10px;
+            padding: 30px 25px;
+            text-align: center;
+            background: linear-gradient(180deg, #f4f6f8 0%, #eef1f4 100%);
+        }
+        .portal-card i { font-size: 30px; color: var(--focus); margin-bottom: 12px; display: block; }
+        .portal-card p { color: #555; font-size: 0.9rem; margin: 0 0 18px; }
+        .portal-card .gem-btn {
+            display: inline-block;
+            background: #002147;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 12px 26px;
+            border-radius: 24px;
+        }
+        .portal-card .gem-btn:hover { background: #00306b; }
+
+        .insight-card { background: #f8f9fa; border-left: 4px solid #d4af37; padding: 20px; margin-bottom: 22px; border-radius: 0 8px 8px 0; }
+        .insight-date { font-size: 0.85rem; color: #666; font-weight: 600; text-transform: uppercase; margin-bottom: 5px; }
+        .insight-title { margin-top: 0; margin-bottom: 12px; color: #002147; font-size: 1.4rem; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Back to VALOR Corporate</a>
+
+    <div class="header-block">
+        <h1 class="logo-text">VALOR <span>PROCUREMENT INSIGHTS</span></h1>
+    </div>
+
+    <!-- ============================================================
+         SEGMENT 1 — GeM Advance Tender Search
+         If this loads blank, GeM's server is blocking iframe embedding
+         (a header on their end, not something fixable from our side).
+         The link below always works regardless.
+    ============================================================= -->
+    <section class="segment">
+        <h2>1. GeM Advance Tender Search</h2>
+        <div class="embed-wrap">
+            <iframe
+                src="https://bidplus.gem.gov.in/advance-search"
+                title="GeM Bid Plus Advance Tender Search"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+        </div>
+        <a href="https://bidplus.gem.gov.in/advance-search" target="_blank" rel="noopener noreferrer" class="embed-link">Open in GeM Portal ↗</a>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ============================================================
+         SEGMENT 2 — State e-Procurement + NSIC
+         Both are government portals that block iframe embedding
+         (X-Frame-Options set on their own servers). Using direct
+         access cards instead of blank/broken embeds.
+    ============================================================= -->
+    <section class="segment">
+        <h2>2. State e-Procurement & NSIC</h2>
+        <div class="portal-grid">
+            <div class="portal-card">
+                <span aria-hidden="true" style="font-size:34px;display:block;margin-bottom:10px;">🏛️</span>
+                <h3>e-Procurement Portal</h3>
+                <p class="portal-desc">Central/state government tender listings — search, active tenders, corrigendums, and bid results.</p>
+                <a href="https://eprocure.gov.in/eprocure/app" target="_blank" rel="noopener noreferrer" class="gem-btn">Open e-Procurement Portal ↗</a>
+            </div>
+            <div class="portal-card">
+                <span aria-hidden="true" style="font-size:34px;display:block;margin-bottom:10px;">🏭</span>
+                <h3>NSIC — Single Point Registration</h3>
+                <p class="portal-desc">National Small Industries Corporation Ltd. (NSIC) is a Government of India, Mini Ratna PSU under the Ministry of MSME, established in 1955. Its Single Point Registration Scheme (SPRS) gives registered MSEs:</p>
+                <ul>
+                    <li>Tender sets free of cost</li>
+                    <li>Exemption from Earnest Money Deposit (EMD)</li>
+                    <li>Price preference up to L1+15% on a portion of the order</li>
+                    <li>Access to the 25% annual MSE procurement reservation</li>
+                </ul>
+                <a href="https://www.nsic.co.in/Tenders/Index" target="_blank" rel="noopener noreferrer" class="gem-btn">View NSIC Tenders ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ============================================================
+         SEGMENT 3 — LinkedIn Newsletter content (curated cards)
+         LinkedIn blocks iframe embedding of its pages and has no
+         public API for pulling newsletter content automatically —
+         so this is real content, entered manually, same as before.
+         Copy the block below for each new entry.
+    ============================================================= -->
+    <section class="segment">
+        <h2>3. Karo Startup — LinkedIn Newsletter</h2>
+
+        <!-- COPY AND PASTE THIS BLOCK FOR NEW ENTRIES -->
+        <div class="insight-card">
+            <div class="insight-date">July 25, 2026</div>
+            <h3 class="insight-title">Understanding Reverse Auction (RA) Financial Engineering</h3>
+            <p>Participating in multi-crore public sector tenders requires sharp mathematical defense. In modern GeM reverse auctions, automated bidding curves often force margins down to critical thresholds. To counter this, suppliers must pre-calculate rigid decoupling parameters before entering the portal dashboard...</p>
+        </div>
+        <!-- END OF COPY BLOCK -->
+
+        <div class="insight-card">
+            <div class="insight-date">July 10, 2026</div>
+            <h3 class="insight-title">GeM Profile Architecture: Mitigating Risk Suspensions</h3>
+            <p>A recent surge in administrative updates on the Government e-Marketplace (GeM) has left several tier-1 MSMEs facing temporary profile flags. Ensure that your corporate banking metrics, active vendor assessments, and OEM declarations match your registration data down to the exact letter to maintain uninterrupted bidding statuses.</p>
+        </div>
+
+        <a href="https://www.linkedin.com/newsletters/karostartup-7163629737544704000/" target="_blank" rel="noopener noreferrer" class="embed-link">Read full newsletter on LinkedIn ↗</a>
+    </section>
+
+</body>
+</html>
