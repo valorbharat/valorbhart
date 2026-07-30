@@ -1,0 +1,26 @@
+/* assets/back-to-top.css
+   Accessible, lightweight floating "Back to top" button styles.
+*/
+#backToTop {
+  position: fixed;
+  right: 1rem;
+  bottom: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99999;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 200ms ease, transform 200ms ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+#backToTop:focus { outline: 3px solid #fff; }
+#backToTop.show { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { #backToTop { transition: none; } }
